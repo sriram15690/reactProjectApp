@@ -7,7 +7,7 @@ var Router = require('react-router');
 var ProjectStore = require('./stores.js');
 var LatestProjectStore = require('./LatestProjectStore.js');
 var ProjectActions = require('./actions.js');
-var SingleProjItem = require("./singleProjComponent.js");
+var ProjectListComp = require("./ProjListComponent.js");
 var toastr = require('toastr');
 
 ProjectActions.loadAllProjects();
@@ -138,25 +138,7 @@ var SelectComponent = React.createClass({
 });
 
 
-var ProjectListComp = React.createClass({
-	PropTypes: {
-		projects: React.PropTypes.array.isRequired
-	},
-	render: function(){
-		var projectsList = [];
-		for(var i in this.props.projects ){
-			projectsList.push(<SingleProjItem project={this.props.projects[i]}/>);
-		}
-		return (
-			<div>
-				<TitleComp title="Project List "/>
-				<ul className="list-group">
-					{projectsList}
-				</ul>
-			</div>
-		);
-	}
-});
+
 
 var LatestProjectComp = React.createClass({
 	render: function(){

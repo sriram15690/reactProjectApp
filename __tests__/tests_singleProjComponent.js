@@ -47,11 +47,17 @@ describe("Single Project Item", function() {
 			<SingleProjItem project={project} />
 		);
 		
+		//Using scry Rendered dom component
+		var domNode = TestUtils.scryRenderedDOMComponentsWithClass(singleProjEle,"list-group-item")
+		expect(domNode.length).toEqual(1);
+		console.log(domNode[0].getDOMNode().textContent);
+		expect(domNode[0].getDOMNode().textContent).toEqual(project.projectName);
 
+		//using findRenderedDOMComponentWithTag
 		singleProjNode = TestUtils.findRenderedDOMComponentWithTag(singleProjEle,"li");
 		singleProjDOMNode = React.findDOMNode(singleProjNode);
 		expect(singleProjDOMNode.textContent).toEqual("Hoegh VMS");
 		TestUtils.Simulate.click(singleProjDOMNode);
-
 	});
+
 });
